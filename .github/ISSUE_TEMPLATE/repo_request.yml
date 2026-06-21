@@ -1,0 +1,62 @@
+name: "Request a new repository"
+description: "Ask an org owner to create a new repo with the right tier, team, and protection."
+title: "[repo] <proposed-name>"
+labels: ["repo-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Repository creation is restricted to org owners so the namespace stays governed.
+        Fill this in; an owner will create the repo with the correct `tier`, team, and branch protection in one step.
+  - type: input
+    id: name
+    attributes:
+      label: Proposed repository name
+      description: "Use the naming convention: research-* for research, proj-* for projects."
+      placeholder: "research-vol-surface"
+    validations:
+      required: true
+  - type: dropdown
+    id: tier
+    attributes:
+      label: Tier
+      description: "Sets the `tier` custom property used by access reviews and rulesets."
+      options:
+        - research
+        - project
+        - core
+    validations:
+      required: true
+  - type: dropdown
+    id: visibility
+    attributes:
+      label: Visibility
+      description: "Default public for research/projects (free, simple access). Choose private only if data/IP requires it."
+      options:
+        - public
+        - private
+    validations:
+      required: true
+  - type: input
+    id: lead
+    attributes:
+      label: Project lead (GitHub handle)
+      description: "Gets `maintain` on the new repo. Members get `write`."
+      placeholder: "@your-handle"
+    validations:
+      required: true
+  - type: textarea
+    id: members
+    attributes:
+      label: Initial members (GitHub handles)
+      description: "Who needs access? Note: outside collaborators on a public repo are free; full org members consume a seat."
+      placeholder: "@alice, @bob"
+    validations:
+      required: false
+  - type: textarea
+    id: purpose
+    attributes:
+      label: Purpose
+      description: "One paragraph: what is this repo for, and how does it relate to existing work?"
+    validations:
+      required: true
