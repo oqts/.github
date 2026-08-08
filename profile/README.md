@@ -1,4 +1,4 @@
-<h1 align="center">Oxford Quantitative Trading Strategies</h1>
+<h1 align="center">Oxford Quantitative Trading Society</h1>
 <p align="center"><strong>OQTS</strong> — the University of Oxford's student-run quantitative trading society.</p>
 
 <p align="center">
