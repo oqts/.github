@@ -9,18 +9,41 @@ rules, which take precedence over this file where they conflict.
 ## Repo map
 
 Checkouts sit side by side under one workspace root, so `../planning/X.md`
-resolves.
+resolves. **Every repo has its own `CLAUDE.md`**: read it before working
+there. It takes precedence over this file where they conflict.
 
-| Repo | Visibility | Holds |
-|---|---|---|
-| `planning` | private | Cross-repo specs: architecture, VPS, data homes, OXDAQ plan |
-| `oqts-design` | public | Brand system, tokens, logo assets. Source of truth for all styling |
-| `oqts-site` | public | Public marketing site, Next.js on Vercel, oqts.org |
-| `oqts-platform` | private | Back-office platform + API, VPS, Postgres. Identity spine |
-| `oxdaq-core` | public | OXDAQ exchange engine, protocol, `oqts-client` SDK, dashboards |
-| `oxdaq-ops` | private | OXDAQ bot implementations, round configs, admin tooling |
-| `oqts-infra` | private | VPS compose files, Caddy config, deploy |
-| `.github` | public | Org defaults, CONTRIBUTING, templates, this file |
+| Repo | Vis | Stack | Status | Holds |
+|---|---|---|---|---|
+| `planning` | private | Markdown | live | The binding cross-repo specs. `OXDAQ-PLAN.md` v2.0, `ARCHITECTURE.md`, `VPS-PLAN.md`, `DATA-HOMES.md`, `PLATFORM-PLAN.md` |
+| `oqts-design` | public | CSS, SVG, Python/Node build tools | live | Brand system, tokens, logo and pattern assets. **Source of truth for all styling** |
+| `oqts-site` | public | Next.js, TS, Vercel | live at oqts.org | Public marketing site. Forms proxy server-side to the platform API |
+| `oqts-platform` | private | FastAPI, Next.js, Postgres 16, Docker | **deployed** on the VPS | Back-office platform and public API. **Identity spine.** Holds applicant CVs and personal data |
+| `oxdaq-core` | public | Python 3.13, FastAPI, asyncio, uv | pre-build | OXDAQ exchange engine, protocol, `oqts-client` SDK, both dashboards |
+| `oxdaq-ops` | private | Python, config | pre-build | OXDAQ bot implementations and tuned parameters, round configs, admin tooling |
+| `oqts-infra` | private | Compose, Caddy, CI | pre-build | VPS compose files, Caddy config, deploy. Consumes `oxdaq-ops` as a submodule |
+| `.github` | public | Markdown | live | Org defaults, CONTRIBUTING, templates, this file |
+
+### How they connect
+
+- **`oqts-design` flows outward.** `oqts-site`, `oqts-platform` and the
+  OXDAQ dashboards each pin it as the submodule `vendor/oqts-design` and
+  copy assets in with their own `scripts/sync-brand.mjs`. A brand change
+  reaches a consumer only when that consumer bumps its pin. No consumer
+  defines styling of its own, ever.
+- **`oqts-platform` is the identity spine.** Its members table issues
+  OXDAQ round tokens and data-API keys. One list of humans, three systems
+  keyed off it.
+- **A new public API endpoint is a three-repo change:** the route in
+  `oqts-site`, the endpoint in `oqts-platform/signup-api`, and the path
+  added to the Caddy allow-list. Miss the third and it 404s in
+  production.
+- **OXDAQ splits open engine from closed configuration.** `oxdaq-core` is
+  public and holds the matching logic anyone may read. `oxdaq-ops` is
+  private and holds the bot parameters participants are meant to
+  reverse-engineer during a round, not before it.
+- **Competition exhaust becomes research data.** OXDAQ trade tapes export
+  into Postgres and files, which the platform's data API later serves to
+  research teams.
 
 ## The working agreement
 
