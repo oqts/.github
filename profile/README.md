@@ -44,15 +44,15 @@ OQTS gives partner firms access to a **pre-screened pool of candidates** who hav
 Sponsorship includes speaker slots, recruitment access, and engagement with our Strategy Team. To partner with us, get in touch at **[oqts@oqts.org](mailto:oqts@oqts.org)**.
 
 ### Our sponsors
-
-> **Gold** — Jane Street · Optiver
-> **Silver** — Citadel · Hudson River Trading
-> **Bronze** — Marshall Wace
+> **Founder** — G-Research
+> **Gold** — Jane Street · Optiver · IMC · Jump Trading
+> **Silver** — Citadel · Hudson River Trading · Susquehanna · QRT · GSA · Five Rings 
+> **Bronze** — Marshall Wace · Da Vinci Trading
 
 ## Founders
 
-- **Nikolai Dahl** — President
-- **Alec Mitchell-Thomson** — President of Research & Technology
+- **Nikolai Dahl** — President, CIO of Fund
+- **Alec Mitchell-Thomson** — Vice-President, Head of Research & Technology
 
 ---
 
