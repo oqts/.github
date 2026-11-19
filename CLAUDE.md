@@ -50,8 +50,8 @@ rewrite must carry in `oqts-platform/docs/MIGRATION.md`.
 - **Member identity lives in the web app.** Its members table issues
   OXDAQ round tokens and, later, data-API keys. One list of humans.
 - **OXDAQ: open engine, closed configuration.** `oxdaq-core` is public;
-  `oxdaq-ops` is private because participants are meant to
-  reverse-engineer the bots during a round, not before it.
+  `oxdaq-ops` is private, and bot parameters are redrawn every round, so
+  edges come from the market, not from knowing the bots (OXDAQ D38).
 - **Brand flows outward from `oqts-design`.** Consumers pin it; a change
   reaches a consumer only when it bumps its pin. No consumer defines
   styling of its own.
