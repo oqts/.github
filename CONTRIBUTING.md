@@ -4,14 +4,14 @@ This guide applies org-wide. It documents how we work across every OQTS reposito
 
 ## Who can contribute
 
-During the foundational build, the **core team** (`@oqts/core`) builds and maintains all infrastructure repos. Strategy Team and project contributors are added per-repository as those avenues open — see [Requesting a new repository](#requesting-a-new-repository).
+During the foundational build, the **core team** (`@oqts/core`) builds and maintains all infrastructure repos. Strategy Team and project contributors are added per-repository as those avenues open. See [Requesting a new repository](#requesting-a-new-repository).
 
 ## Branching & pull requests
 
 We work on branches and merge through pull requests. **No one pushes directly to `main`.**
 
 1. Branch off `main`: `git checkout -b your-name/short-description`
-2. Make focused commits — one logical change per PR; don't mix unrelated edits.
+2. Make focused commits: one logical change per PR; don't mix unrelated edits.
 3. Open a PR into `main` and fill in the template.
 4. A **code owner review** is required (auto-requested via `CODEOWNERS`), plus **at least one approval**.
 5. Once approved and checks pass, merge. Force-pushes and branch deletion on `main` are blocked.
@@ -26,9 +26,9 @@ Keep them short and imperative: `Add order validation for short sells`, not `add
 
 This is the one rule with no exceptions.
 
-- No credentials, tokens, API keys, deploy keys, or `.env` files in any repo — public **or** private.
+- No credentials, tokens, API keys, deploy keys, or `.env` files in any repo, public **or** private.
 - Secrets live in the org secrets manager / Actions secrets, scoped to the repo that needs them.
-- The shared `.gitignore` already excludes `.env`, `*.pem`, `*.key`, and similar — don't override it.
+- The shared `.gitignore` already excludes `.env`, `*.pem`, `*.key`, and similar. Don't override it.
 - If you commit a secret by accident, treat it as compromised: **rotate it immediately** and tell an owner. Removing it from history is not enough.
 
 ## Code owners
@@ -43,7 +43,7 @@ Repository creation is restricted to org owners so the namespace stays governed.
 2. Fill in the name, tier, visibility, lead, and purpose.
 3. An owner creates it with the correct `tier`, team access, and branch protection in one step.
 
-Research and project repos are public by default and owned by their project team — the core infrastructure repos stay separate.
+Research and project repos are public by default and owned by their project team; the core infrastructure repos stay separate.
 
 ## Questions
 
